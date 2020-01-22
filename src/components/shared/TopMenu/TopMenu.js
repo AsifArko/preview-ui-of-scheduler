@@ -1,31 +1,36 @@
 import React from "react";
 import {Icon, Menu} from 'semantic-ui-react'
+import {Link} from "react-router-dom";
 
 export class TopMenu extends React.Component {
     render() {
         return (
             <div className={"TopMenu"}>
                 <Menu>
-                    <Menu.Item name='queue'>
-                        <Icon name={"circle"}/>
-                        <b>Queue</b>
-                    </Menu.Item>
+                    <Link to={"/"}>
+                        <Menu.Item name='queue'>
+                            <Icon name={"circle"}/>
+                            <b>Queue</b>
+                        </Menu.Item>
+                    </Link>
 
-                    <Menu.Item name='passed-jobs'>
-                        Passed List
-                    </Menu.Item>
+                    <Link to={"waiting"}>
+                        <Menu.Item name='passed-jobs'>
+                            Waiting List
+                        </Menu.Item>
+                    </Link>
 
-                    <Menu.Item name='passed-jobs'>
-                        Waiting List
-                    </Menu.Item>
+                    <Link to={"failed"}>
+                        <Menu.Item name='failed-jobs'>
+                            Failed List
+                        </Menu.Item>
+                    </Link>
 
-                    <Menu.Item name='failed-jobs'>
-                        Failed List
-                    </Menu.Item>
-
-                    <Menu.Item name='failed-jobs'>
-                        Stalled List
-                    </Menu.Item>
+                    <Link to={"delayed"}>
+                        <Menu.Item name='delayed-jobs'>
+                            Delayed List
+                        </Menu.Item>
+                    </Link>
                 </Menu>
             </div>
         )

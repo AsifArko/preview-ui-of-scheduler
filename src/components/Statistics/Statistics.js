@@ -10,9 +10,9 @@ import {getStatisticsApiPath} from "../../utils/routerUtils";
 class QueueStatistics extends React.Component {
     componentDidMount() {
         this.fetchStatistics();
-        setInterval(()=>{
+        setInterval(() => {
             this.fetchStatistics()
-        },2000)
+        }, 10000)
     }
 
     fetchStatistics() {
@@ -26,8 +26,7 @@ class QueueStatistics extends React.Component {
 
     render() {
         const {data} = this.props;
-        let statuses = ["Active", "Completed", "Waiting", "Delayed", "Failed", "Stalled"];
-
+        let statuses = ["Completed", "Active", "Waiting", "Delayed", "Failed", "Stalled"];
         let cards = statuses.map(status => {
             let count = 0;
             if (data !== null) {
