@@ -1,11 +1,10 @@
 import axios from "./AxiosWrapper";
-import {createAction} from "redux-starter-kit";
+import {createAction} from "@reduxjs/toolkit";
+import {BASE_URL} from "./constants";
 
 export const REQUEST = "REQUEST";
 export const RECEIVE = "RECEIVE";
 export const FAILED = "FAILED";
-
-const url = "http://localhost:8080";
 
 export function loadData(params, path, type) {
     const request = createAction(REQUEST + type.name);
@@ -14,7 +13,7 @@ export function loadData(params, path, type) {
 
     return dispatch => {
         dispatch(request());
-        return axios.get(url)
+        return axios.get(BASE_URL + path)
             .then(function (response) {
                 dispatch(receive(response.data));
             }).catch(function (error) {
