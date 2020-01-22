@@ -9,7 +9,7 @@ import {getStatisticsApiPath} from "../../utils/routerUtils";
 
 class QueueStatistics extends React.Component {
     componentDidMount() {
-        this.fetchStatistics()
+        this.fetchStatistics();
         setInterval(()=>{
             this.fetchStatistics()
         },2000)
@@ -61,7 +61,7 @@ class QueueStatistics extends React.Component {
                     <Card>
                         <Card.Content header={status}/>
                         <Card.Content extra>
-                            {count}
+                            Total : {count}
                         </Card.Content>
                     </Card>
                 </Menu.Item>
