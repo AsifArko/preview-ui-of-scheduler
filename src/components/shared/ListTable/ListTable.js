@@ -37,7 +37,7 @@ export default class ListTable extends React.Component {
 
         return (
             <div style={{padding: '40px'}}>
-                <Table celled>
+                <Table celled compact={true}>
                     <Table.Header>
                         <Table.Row key={"header"}>
                             {headerCells}
