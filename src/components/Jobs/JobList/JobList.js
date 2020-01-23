@@ -4,6 +4,7 @@ import utils from "../../../utils/utils";
 import {connect} from "react-redux";
 import {contentType} from "../../../utils/ActionTypes";
 import ListTable from "../../shared/ListTable/ListTable";
+import {Dimmer, Loader, Segment} from "semantic-ui-react";
 
 class JobListTable extends React.Component {
     componentDidMount() {
@@ -16,9 +17,16 @@ class JobListTable extends React.Component {
     }
 
     render() {
-        const {data} = this.props;
+        const {data, isFetching} = this.props;
         return (
-            <ListTable data={(data !== null || data !== undefined) ? data : null}/>
+            <div style={{paddingLeft: '45px', paddingRight: '45px',paddingTop:'1px'}}>
+                <Segment basic={true}>
+                    <Dimmer active={isFetching} inverted>
+                        <Loader size="small"/>
+                    </Dimmer>
+                    <ListTable data={(data !== null || data !== undefined) ? data : null}/>
+                </Segment>
+            </div>
         )
     }
 }

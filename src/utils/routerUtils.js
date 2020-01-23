@@ -3,3 +3,4 @@ export const getFailedListApiPath = "/failed";
 export const getCompletedListApiPath = "/jobs";
 export const getDelayedListApiPath = "/delayed";
 export const getWaitingListApiPath = "/waiting";
+export const getActiveListApiPath = "/active";

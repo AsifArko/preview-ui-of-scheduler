@@ -14,8 +14,20 @@ export class TopMenu extends React.Component {
                         </Menu.Item>
                     </Link>
 
-                    <Link to={"waiting"}>
+                    <Link to={"completed"}>
                         <Menu.Item name='passed-jobs'>
+                            Completed List
+                        </Menu.Item>
+                    </Link>
+
+                    <Link to={"active"}>
+                        <Menu.Item name='passed-jobs'>
+                            Active List
+                        </Menu.Item>
+                    </Link>
+
+                    <Link to={"waiting"}>
+                        <Menu.Item name='waiting-jobs'>
                             Waiting List
                         </Menu.Item>
                     </Link>
