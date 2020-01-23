@@ -8,11 +8,28 @@ import {contentType} from "../../utils/ActionTypes";
 import {getStatisticsApiPath} from "../../utils/routerUtils";
 
 class QueueStatistics extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: null
+        }
+    }
+
     componentDidMount() {
         this.fetchStatistics();
         setInterval(() => {
             this.fetchStatistics()
         }, 10000)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {callback} = this.props;
+        if (this.props.data !== null && prevState.data !== this.props.data) {
+            this.setState({
+                data: this.props.data
+            });
+            callback(this.props.data)
+        }
     }
 
     fetchStatistics() {
