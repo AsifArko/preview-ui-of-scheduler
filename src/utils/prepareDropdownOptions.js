@@ -25,12 +25,12 @@ export function prepareDurationOptions(interval) {
             duration = [
                 {
                     key: 'one_hour',
-                    text: 'one hour',
+                    text: '1 hr',
                     value: '1',
                 },
                 {
                     key: 'six_hours',
-                    text: '6 hour',
+                    text: '6 hr',
                     value: '6',
                 }
             ];
@@ -38,18 +38,18 @@ export function prepareDurationOptions(interval) {
         case "7":
             duration = [
                 {
-                    key: '1_hour',
-                    text: 'one hour',
+                    key: 'one_hour',
+                    text: '1 hr',
                     value: '1',
                 },
                 {
                     key: '6_hours',
-                    text: '6 hour',
+                    text: '6 hr',
                     value: '6',
                 },
                 {
-                    key: '24_hours',
-                    text: '24 hour',
+                    key: '1_day',
+                    text: '24 hr',
                     value: '24',
                 }
             ];
@@ -57,19 +57,19 @@ export function prepareDurationOptions(interval) {
         case "30":
             duration = [
                 {
-                    key: '1_hour',
-                    text: 'one hour',
-                    value: '1',
-                },
-                {
-                    key: '6_hours',
-                    text: '6 hour',
+                    key: '6_hour',
+                    text: '6 hr',
                     value: '6',
                 },
                 {
                     key: '24_hours',
-                    text: '24 hour',
+                    text: '1 day',
                     value: '24',
+                },
+                {
+                    key: '7_days',
+                    text: '7 days',
+                    value: '7',
                 }
             ];
             break;

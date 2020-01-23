@@ -13,15 +13,9 @@ export default class DetailsTable extends React.Component {
         const {data} = this.props;
         let metaRows;
         let metaHeaders = [
-            "id",
-            "name",
-            "progress",
-            "delay",
-            "attemptsMade",
-            "finishedOn",
-            "processedOn",
-            "timestamp",
-            "failedReason"
+            "id", "name", "progress",
+            "delay", "attemptsMade", "finishedOn",
+            "processedOn", "timestamp", "failedReason"
         ];
 
         if (data !== null) {
