@@ -35,9 +35,15 @@ class StatisticsChart extends React.Component {
 
         return (
             <div className="chart-inline"
-                 style={{display: 'flex', paddingLeft: '100px', paddingRight: '1px', paddingTop: '20px'}}>
+                 style={{
+                     display: 'flex',
+                     paddingLeft: '285px',
+                     paddingRight: '1px',
+                     paddingTop: '20px',
+                     paddingBottom: '20px'
+                 }}>
                 <Segment>
-                    <AreaChart width={1905} height={700} data={chartParams}
+                    <AreaChart width={1500} height={600} data={chartParams}
                                margin={{top: 30, right: 30, left: 0, bottom: 10}}>
                         <CartesianGrid strokeDasharray="3 3"/>
                         <XAxis dataKey="id"/>

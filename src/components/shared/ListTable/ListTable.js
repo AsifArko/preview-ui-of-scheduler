@@ -1,13 +1,14 @@
 import React from "react";
-import {Table} from "semantic-ui-react";
+import {Icon, Table} from "semantic-ui-react";
+import {Link} from "react-router-dom";
 
 export default class ListTable extends React.Component {
     render() {
         let {data} = this.props;
-        let headers = ["ID", "Name", "progress", "Delay", "Timestamp", "Attempts", "FinishedAt", "ProcessedAt"];
+        let headers = ["ID", "Name", "progress", "Delay", "Timestamp", "Attempts", "FinishedAt", "ProcessedAt", "Action"];
         let headerCells = headers.map(header => {
             return (
-                <Table.HeaderCell key={header}>{header}</Table.HeaderCell>
+                <Table.HeaderCell key={header} textAlign={"center"}>{header}</Table.HeaderCell>
             )
         });
 
@@ -20,14 +21,19 @@ export default class ListTable extends React.Component {
                     let processed = new Date(each.processedOn);
                     return (
                         <Table.Row key={each.id}>
-                            <Table.Cell>{each.id}</Table.Cell>
-                            <Table.Cell>{each.name}</Table.Cell>
-                            <Table.Cell>{each.progress}</Table.Cell>
-                            <Table.Cell>{each.delay}</Table.Cell>
-                            <Table.Cell>{time.toISOString()}</Table.Cell>
-                            <Table.Cell>{each.attemptsMade}</Table.Cell>
-                            <Table.Cell>{finished.toISOString()}</Table.Cell>
-                            <Table.Cell>{processed.toISOString()}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>{each.id}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>{each.name}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>{each.progress}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>{each.delay}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>{time.toISOString()}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>{each.attemptsMade}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>{finished.toISOString()}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>{processed.toISOString()}</Table.Cell>
+                            <Table.Cell textAlign={"center"}>
+                                <Link to={`/job/${each.id}`}>
+                                    <Icon name={"bars"}/>
+                                </Link>
+                            </Table.Cell>
                         </Table.Row>
                     )
                 }

@@ -13,6 +13,7 @@ import WaitingList from "./components/Jobs/WaitingList/WaitingList";
 import DelayedList from "./components/Jobs/DelayedList/DelayedList";
 import CompletedList from "./components/Jobs/CompletedList/CompletedList";
 import ActiveList from "./components/Jobs/ActiveList/ActiveList";
+import JobDetails from "./components/Jobs/JobDetails/JobDetails";
 
 const store = configureStore({reducer: rootReducer});
 
@@ -26,6 +27,7 @@ ReactDOM.render(
                 <Route path='/waiting' exact component={WaitingList}/>
                 <Route path='/delayed' exact component={DelayedList}/>
                 <Route path='/failed' exact component={FailedList}/>
+                <Route path='/job/:id' exact component={JobDetails}/>
             </Provider>
         </Provider>
     </BrowserRouter>,

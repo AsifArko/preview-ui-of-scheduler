@@ -7,6 +7,13 @@ import ListTable from "../../shared/ListTable/ListTable";
 import {Dimmer, Loader, Segment} from "semantic-ui-react";
 
 class JobListTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: null
+        }
+    }
+
     componentDidMount() {
         const {onLoadData, path} = this.props;
         onLoadData(
@@ -19,7 +26,7 @@ class JobListTable extends React.Component {
     render() {
         const {data, isFetching} = this.props;
         return (
-            <div style={{paddingLeft: '45px', paddingRight: '45px',paddingTop:'1px'}}>
+            <div style={{paddingLeft: '45px', paddingRight: '45px', paddingTop: '1px'}}>
                 <Segment basic={true}>
                     <Dimmer active={isFetching} inverted>
                         <Loader size="small"/>
@@ -36,10 +43,10 @@ const mapActionToProps = {
 };
 
 const mapStateToProps = state => {
-    const {completeJobListRemoteData} = state;
+    const {jobListRemoteData} = state;
     return {
-        data: utils.getData(completeJobListRemoteData),
-        isFetching: utils.getIsFetching(completeJobListRemoteData)
+        data: utils.getData(jobListRemoteData),
+        isFetching: utils.getIsFetching(jobListRemoteData)
     };
 };
 

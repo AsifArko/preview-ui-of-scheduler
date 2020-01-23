@@ -70,7 +70,6 @@ class QueueStatistics extends React.Component {
                         count = 0;
                         break;
                 }
-
             }
             return (
                 <Menu.Item key={status}>
