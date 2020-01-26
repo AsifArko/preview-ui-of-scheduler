@@ -1,8 +1,13 @@
 import React from "react";
-import {Icon, Table} from "semantic-ui-react";
+import {Icon, Pagination, Table} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 
 export default class ListTable extends React.Component {
+    handlePageChange = (e, pageInfo) => {
+        const {callback} = this.props;
+        callback(pageInfo.activePage)
+    };
+
     render() {
         let {data} = this.props;
         let headers = ["ID", "Name", "progress", "Delay", "Timestamp", "Attempts", "FinishedAt", "ProcessedAt", "Action"];
@@ -54,6 +59,18 @@ export default class ListTable extends React.Component {
                         {rows}
                     </Table.Body>
                 </Table>
+                <div style={{float: 'right'}}>
+                    <Pagination
+                        boundaryRange={0}
+                        defaultActivePage={1}
+                        ellipsisItem={null}
+                        firstItem={null}
+                        lastItem={null}
+                        siblingRange={1}
+                        totalPages={10}
+                        onPageChange={this.handlePageChange}
+                    />
+                </div>
             </div>
         )
     }

@@ -23,15 +23,32 @@ class JobList extends React.Component {
         )
     }
 
+    handlePageChange = (data) => {
+        const {callback} = this.props;
+        callback(data);
+    };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {onLoadData, path} = this.props;
+        if (this.props.path !== prevProps.path && this.props.path !== ""){
+            onLoadData(
+                null,
+                path,
+                contentType.LIST
+            )
+        }
+    }
+
     render() {
         const {data, isFetching} = this.props;
         return (
             <div style={{paddingLeft: '45px', paddingRight: '45px', paddingTop: '1px'}}>
                 <Segment basic={true}>
-                    <Dimmer active={isFetching} inverted>
-                        <Loader size="small"/>
-                    </Dimmer>
-                    <ListTable data={(data !== null || data !== undefined) ? data : null}/>
+                    <Dimmer active={isFetching} inverted><Loader size="small"/></Dimmer>
+                    <ListTable
+                        data={(data !== null || data !== undefined) ? data : null}
+                        callback={this.handlePageChange}
+                    />
                 </Segment>
             </div>
         )
