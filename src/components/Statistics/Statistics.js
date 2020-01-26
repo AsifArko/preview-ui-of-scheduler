@@ -8,6 +8,8 @@ import {contentType} from "../../utils/ActionTypes";
 import {getStatisticsApiPath} from "../../utils/routerUtils";
 
 class QueueStatistics extends React.Component {
+    intervalID = 0;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -16,14 +18,14 @@ class QueueStatistics extends React.Component {
     }
 
     componentWillUnmount() {
-        clearInterval()
+        clearInterval(this.intervalID)
     }
 
     componentDidMount() {
         this.fetchStatistics();
-        setInterval(() => {
+        this.intervalID = setInterval(() => {
             this.fetchStatistics()
-        }, 10000)
+        }, 1000)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
