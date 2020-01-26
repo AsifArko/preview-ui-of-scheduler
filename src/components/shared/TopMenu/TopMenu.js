@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 export class TopMenu extends React.Component {
     render() {
         return (
-            <div className={"TopMenu"} style={{padding:'0px'}}>
+            <div className={"TopMenu"}>
                 <Menu>
                     <Link to={"/"}>
                         <Menu.Item name='queue'>
@@ -21,7 +21,7 @@ export class TopMenu extends React.Component {
                     </Link>
 
                     <Link to={"active"}>
-                        <Menu.Item name='passed-jobs'>
+                        <Menu.Item name='active-jobs'>
                             Active List
                         </Menu.Item>
                     </Link>
@@ -32,15 +32,15 @@ export class TopMenu extends React.Component {
                         </Menu.Item>
                     </Link>
 
-                    <Link to={"failed"}>
-                        <Menu.Item name='failed-jobs'>
-                            Failed List
-                        </Menu.Item>
-                    </Link>
-
                     <Link to={"delayed"}>
                         <Menu.Item name='delayed-jobs'>
                             Delayed List
+                        </Menu.Item>
+                    </Link>
+
+                    <Link to={"failed"}>
+                        <Menu.Item name='failed-jobs'>
+                            Failed List
                         </Menu.Item>
                     </Link>
                 </Menu>
