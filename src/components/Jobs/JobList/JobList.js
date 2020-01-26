@@ -6,7 +6,7 @@ import {contentType} from "../../../utils/ActionTypes";
 import ListTable from "../../shared/ListTable/ListTable";
 import {Dimmer, Loader, Segment} from "semantic-ui-react";
 
-class JobListTable extends React.Component {
+class JobList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -50,4 +50,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, mapActionToProps)(JobListTable);
+export default connect(mapStateToProps, mapActionToProps)(JobList);
