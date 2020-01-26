@@ -15,6 +15,10 @@ class QueueStatistics extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        clearInterval()
+    }
+
     componentDidMount() {
         this.fetchStatistics();
         setInterval(() => {
