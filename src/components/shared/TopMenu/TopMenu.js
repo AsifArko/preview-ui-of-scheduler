@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 export class TopMenu extends React.Component {
     render() {
         return (
-            <div className={"TopMenu"}>
+            <div className={"TopMenu"} style={{padding:'0px'}}>
                 <Menu>
                     <Link to={"/"}>
                         <Menu.Item name='queue'>

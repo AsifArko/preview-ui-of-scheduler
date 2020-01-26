@@ -35,8 +35,10 @@ class Dashboard extends React.Component {
 
     render() {
         const {data, interval} = this.state;
+
         let intervals = prepareIntervalOptions();
         let durations = prepareDurationOptions(interval);
+
         return (
             <div>
                 <div className={"statistics-wrapper"}>
