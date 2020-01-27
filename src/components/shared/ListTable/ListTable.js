@@ -1,6 +1,7 @@
 import React from "react";
 import {Icon, Pagination, Table} from "semantic-ui-react";
 import {Link} from "react-router-dom";
+import "./ListTable.css";
 
 export default class ListTable extends React.Component {
     handlePageChange = (e, pageInfo) => {
@@ -41,10 +42,11 @@ export default class ListTable extends React.Component {
                             <Table.Cell textAlign={"center"}>{processed.toISOString()}</Table.Cell>
                             <Table.Cell textAlign={"center"}>
                                 <Link to={`/job/${each.id}`}>
-                                    <Icon name={"bars"}/>
+                                    <Icon className={"details-icon"} name={"bars"}/>
                                 </Link>
+
                                 {(this.props.retry === true) ? (
-                                    <Icon name={"wrench"} onClick={() => {
+                                    <Icon className={"retry-icon"} name={"wrench"} onClick={() => {
                                         this.onRetryClick(each.id)
                                     }}/>
                                 ) : null}

@@ -1,0 +1,9 @@
+.retry-icon {
+    cursor: pointer;
+    padding-left: 5px;
+}
+
+.details-icon {
+    cursor: pointer;
+    padding-right: 5px;
+}
