@@ -1,9 +1,8 @@
 export default function prepareChartData(data) {
     let keys = Object.keys(data);
-    let timeStr = new Date(data.time).toLocaleTimeString();
     let chartParameters = keys.map(key => {
         return {
-            id: timeStr,
+            id: new Date().toLocaleTimeString().toString(),
             completed: data.completed,
             active: data.active,
             waiting: data.waiting,
