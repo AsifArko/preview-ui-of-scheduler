@@ -28,3 +28,24 @@ export function loadData(params, path, type) {
             })
     }
 }
+
+export function postData(path, json, type) {
+    const request = createAction(REQUEST + type.name);
+    const receive = createAction(RECEIVE + type.name);
+    const failed = createAction(FAILED);
+    const url = BASE_URL + path;
+    return dispatch => {
+        dispatch(request());
+        return axios
+            .post(url, json)
+            .then(function (response) {
+                dispatch(receive(response.data));
+            })
+            .catch(function (error) {
+                dispatch(failed({
+                    message: error.response.data.error,
+                    status: error.response.status
+                }));
+            });
+    };
+}

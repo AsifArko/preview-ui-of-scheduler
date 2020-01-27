@@ -28,9 +28,14 @@ class JobList extends React.Component {
         callback(data);
     };
 
+    retryJob = (id) => {
+        const {retryCallback} = this.props;
+        retryCallback(id);
+    };
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {onLoadData, path} = this.props;
-        if (this.props.path !== prevProps.path && this.props.path !== ""){
+        if (this.props.path !== prevProps.path && this.props.path !== "") {
             onLoadData(
                 null,
                 path,
@@ -48,6 +53,8 @@ class JobList extends React.Component {
                     <ListTable
                         data={(data !== null || data !== undefined) ? data : null}
                         callback={this.handlePageChange}
+                        retry={(this.props.retry === true) ? true : false}
+                        retryCallback={this.retryJob}
                     />
                 </Segment>
             </div>
