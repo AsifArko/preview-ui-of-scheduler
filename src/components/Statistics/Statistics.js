@@ -48,7 +48,8 @@ class QueueStatistics extends React.Component {
     }
 
     render() {
-        const {data} = this.props;
+        const {data} = this.state;
+
         let statuses = ["Completed", "Active", "Waiting", "Delayed", "Failed", "Stalled"];
         let cards = statuses.map(status => {
             let count = 0;
