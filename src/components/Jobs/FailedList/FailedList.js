@@ -1,11 +1,15 @@
 import React from "react";
 import JobList from "../JobList/JobList";
-import {getFailedListApiPath} from "../../../utils/routerUtils";
+import {getFailedListApiPath, getRetryApiPath} from "../../../utils/routerUtils";
 import {TopMenu} from "../../shared/TopMenu/TopMenu";
 import PropTypes from "prop-types";
 import {preparePaginatedApiUrl} from "../../../utils/preparePaginationUrl";
+import {postData} from "../../../utils/ActionCreators";
+import utils from "../../../utils/utils";
+import {connect} from "react-redux";
+import {contentType} from "../../../utils/ActionTypes";
 
-export default class FailedList extends React.Component {
+class FailedList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,6 +27,18 @@ export default class FailedList extends React.Component {
         })
     };
 
+    retryJob = (id) => {
+        const {onPostData} = this.props;
+        let path = getRetryApiPath(id);
+        onPostData(path, null, contentType.RETRY)
+    };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.data !== this.props.data && this.props.data !== null) {
+            window.location.reload();
+        }
+    }
+
     render() {
         const {path} = this.state;
         return (
@@ -31,6 +47,8 @@ export default class FailedList extends React.Component {
                 <JobList
                     path={path}
                     callback={this.handlePageChange}
+                    retry={true}
+                    retryCallback={this.retryJob}
                 />
             </div>
         )
@@ -42,3 +60,17 @@ FailedList.propTypes = {
         pathname: PropTypes.string.isRequired
     }).isRequired
 };
+
+const mapActionToProps = {
+    onPostData: postData
+};
+
+const mapStateToProps = state => {
+    const {jobRetryRemoteData} = state;
+    return {
+        data: utils.getData(jobRetryRemoteData),
+        isFetching: utils.getIsFetching(jobRetryRemoteData)
+    };
+};
+
+export default connect(mapStateToProps, mapActionToProps)(FailedList);

@@ -32,7 +32,6 @@ class StatisticsChart extends React.Component {
                 fillOpacity={0.5}
             />
         );
-
         return (
             <div className="chart-inline"
                  style={{

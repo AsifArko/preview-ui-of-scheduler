@@ -8,6 +8,11 @@ export default class ListTable extends React.Component {
         callback(pageInfo.activePage)
     };
 
+    onRetryClick = (id) => {
+        const {retryCallback} = this.props;
+        retryCallback(id);
+    };
+
     render() {
         let {data} = this.props;
         let headers = ["ID", "Name", "progress", "Delay", "Timestamp", "Attempts", "FinishedAt", "ProcessedAt", "Action"];
@@ -38,6 +43,11 @@ export default class ListTable extends React.Component {
                                 <Link to={`/job/${each.id}`}>
                                     <Icon name={"bars"}/>
                                 </Link>
+                                {(this.props.retry === true) ? (
+                                    <Icon name={"wrench"} onClick={() => {
+                                        this.onRetryClick(each.id)
+                                    }}/>
+                                ) : null}
                             </Table.Cell>
                         </Table.Row>
                     )
